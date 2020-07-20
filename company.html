@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="images/icons/pada-logo.jpg">
+        <title>Company Profile</title>
+        
+        <link rel="stylesheet" href="css/bootstrap.css">
+        <link rel="stylesheet" href="css/vendors/linericon/style.css">
+        <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/style.css">
+        
+        <link rel="stylesheet" type="text/css" href="css/util.css">
+        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="css/dob.css">
+        <link rel="stylesheet" type="text/css" href="css/combobox.css">
+        <link rel="stylesheet" type="text/css" href="css/company.css">
+
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> <!--this is for modals-->
+
+        <link rel="stylesheet" href="css/paginate.css">
+        <link rel="stylesheet" href="css/ligne.css">
+                
+    </head>
+    <body>
+        <!--================Header Menu Area =================-->
+        <header class="header_area">
+                <div class="main_menu">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <div class="container box_1620">
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <a class="navbar-brand logo_h" href="#"><img id="homeImage" src="images/icons/cite.png" alt=""></a>
+                            
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+                                <ul class="nav navbar-nav menu_nav ml-auto">
+                                    <li class="nav-item active"><a class="nav-link" href="#" id="home">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" id="search_students">Attributes</a></li>  
+                                    <li class="nav-item"><a class="nav-link" href="#" id="settings">Employees</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" id="map">Map</a></li>
+                                </ul>
+                            </div> 
+                        </div>
+                    </nav>
+                </div>
+            </header>
+            <!--================Header Menu Area =================-->
+
+            <section class="home_banner_area" >
+                    <div class="container box_1620" >
+                        <div class="banner_inner d-flex align-items-center" >
+             <!--================Home Banner Area =================-->
+                         <div class="banner_content" id="homeArea">
+                             <div class="media">
+                                 <div class="d-flex">
+                                     <img class="attributesImage" src="images/home.jpg" alt="">
+                                 </div>
+                                 <div class="media-body">
+                                     <div class="personal_text">
+                                         <h6>Welcome ,</h6>
+                                         <h3 id="company_name">CITE S.A.</h3>
+                                         <h4>our company application is available for you</h4>
+                                         <p>Our purpose is to help effectively connection between students and companies. As a company you have the opportunity, by purchasing units, to download as many student resumes as the units are.</p>
+                                         <ul class="list basic_info">
+                                             <!-- <li><a href="#"><i class="lnr lnr-calendar-full"></i> 31st December, 1992</a></li> -->
+                                             <li><a href="#"><i class="lnr lnr-envelope"></i><span id="mail">businessplan@donald</span> </a></li>
+                                             <li><a href="#"><i class="lnr lnr-database"></i> units: <span id="units">44</span></a></li>
+                                         </ul>
+                                         <ul class="list personal_social">
+                                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                             <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                         </ul>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                         <!--================Home Banner Area =================-->
+
+
+                        <!--Attributes-->
+                        <div class="banner_content" style="display: none;" id="searchArea">
+                        <div class="media">
+                            <div >
+                                
+                                <img style="width: 270px;" src="images/attributes.png" alt="">
+                                
+                            </div>
+                            
+                            <div class="media-body">
+                                
+                                <form class="login100-form validate-form" id="search_form">
+
+                                    <div id="company_combobox" class="custom-select" style="width:200px;">
+                                        <select name="department" required>
+                                            <option value="0">Select Department</option>
+                                            <option value="1">Department of Public Health</option>
+                                            <option value="2">Department of Management, Economics & Social Sciences</option>
+                                            <option value="3">Department of Food Sciences</option>
+                                            <option value="4">Department of Health and Welfare Sciences</option>
+                                            <option value="5">Department of Applied Arts and Culture</option>
+                                            <option value="6">Department of Engineering</option>
+                                        </select>
+                                        <p style="display: none; color:red;" id="departChoice">Department choice is required.</p>
+                                    </div>
+                                    <br><br><br>
+                                    
+                                    <div class="contact100-form-checkbox">
+                                        <input class="input-checkbox100" id="ckb3" type="checkbox" name="workExperience">
+                                        <label class="label-checkbox100" for="ckb3">
+                                            Work Experience
+                                        </label>
+                                    </div>					
+                                
+                                    <button class="login100-form-search-btn" id="search-btn" type="submit">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                    <p style="display: none; color:red;" id="students_not_found">Students with these properties not found.</p>
+                                    <img id="loadingImage" src="images/loading.gif" style="display: none;">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Attributes-->
+
+     
+                         <!--Employees-->
+                         <div class="banner_content" style="display: none;" id="settingsArea">
+                             <input id="changePhoto" style="display: none;" type="file"/>
+                             <a href="#" style="color: #57b846;" id="changePhotoLink"><i class="lnr lnr-pencil"></i> Change my logo</a>
+                             <div class="media">
+                                 <div >
+                                     
+                                     <img class="profileImage" src="images/employees.jpg" alt="">
+                                     
+                                 </div>
+                                 <img id="loadingIm" src="images/loading.gif" style="display: none; height: 50px; width: 50px;">
+                                 <p style="display: none; color:#57b846;" id="uploadImageSuccess">Your Image uploaded successfully.</p>
+                                 <p style="display: none; color:red;" id="uploadImageFail">Image upload failed. Image size not supported.</p>
+                                 <p style="display: none; color:red;" id="no_image">The selected file is not an image.</p>
+     
+                                 
+                                 <div class="media-body">
+                                     
+                                     <form class="login100-form validate-form" id="settingsForm">
+                                             <div class=" m-b-26">												
+                                                 <a href="#" style="color: red;" id="deleteMyProfile"><i class="lnr lnr-power-switch"></i> Delete My Profile</a>
+                                             </div>
+
+                                             <div class=" m-b-26">												
+                                                <a href="#" style="color: #008080;" id="change_password"><i class="lnr lnr-pencil"></i> Change Password</a>
+                                            </div>
+     
+                                             <div class="wrap-input100 validate-input m-b-26" data-validate=" is required">
+                                                 <span class="label-input100">Company Name</span>
+                                                 <input class="input100" type="text" name="companyName" id="companyName" placeholder="Enter company name" required>
+                                                 <span class="focus-input100"></span>
+                                             </div>
+                             
+                                             <div class="wrap-input100 validate-input m-b-18" data-validate = "Email is required">
+                                                     <span class="label-input100">Email</span>
+                                                     <input class="input100" type="email" name="email" id="email" placeholder="Enter email" required>
+                                                     <span class="focus-input100"></span>
+                                            </div>
+                                 
+                                            <div class="wrap-input100 validate-input m-b-18" data-validate = "is required">
+                                                <span class="label-input100">Units</span>
+                                                <input class="input100" type="number" name="units" placeholder="Buy units. Each unit costs 5€.">
+                                                <span class="focus-input100"></span>
+                                            </div>
+                                                 
+                             
+                                             <div class="container-login100-form-btn">
+                                                 <button class="login100-form-btn" type="submit">
+                                                     Submit
+                                                 </button>
+                                             </div>
+                                             <img id="loadingIma" src="images/loading.gif" style="display: none;">
+                                             <br><br><br><br>
+                                             <p style="display: none; color:#57b846;" id="mailSuccess">Your settings have been saved.</p>
+                                             <p style="display: none; color:red;" id="mailFail">There is another user who has this email account.</p>
+                                         </form>
+                                 </div>
+                             </div>
+                         </div>
+                         <!--Employees-->
+
+                        <!--Map-->
+                        <div class="banner_content" style="display: none;" id="mapArea">
+                            <div class="media">
+                                <div >
+                                    
+                                    <img style="width: 270px;" src="images/map.jpg" alt="">
+                                    
+                                </div>
+                                
+                                <div class="media-body">
+                                    
+                                    <form class="login100-form validate-form" id="map_form">
+    
+                                        <div id="company_combobox" class="custom-select" style="width:200px;">
+                                            <select name="department" required>
+                                                <option value="0">Select Department</option>
+                                                <option value="1">Department of Public Health</option>
+                                                <option value="2">Department of Management, Economics & Social Sciences</option>
+                                                <option value="3">Department of Food Sciences</option>
+                                                <option value="4">Department of Health and Welfare Sciences</option>
+                                                <option value="5">Department of Applied Arts and Culture</option>
+                                                <option value="6">Department of Engineering</option>
+                                            </select>
+                                            <p style="display: none; color:red;" id="departChoice">Department choice is required.</p>
+                                        </div>
+                                        <br><br><br>
+                                        
+                                        <div class="contact100-form-checkbox">
+                                            <input class="input-checkbox100" id="ckb3" type="checkbox" name="workExperience">
+                                            <label class="label-checkbox100" for="ckb3">
+                                                Work Experience
+                                            </label>
+                                        </div>					
+                                    
+                                        <button class="login100-form-search-btn" id="search-btn" type="submit">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                        <p style="display: none; color:red;" id="students_not_found">Students with these properties not found.</p>
+                                        <img id="loadingImage" src="images/loading.gif" style="display: none;">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Map-->
+     
+                     </div>
+                 </div>
+             </section>
+
+            <!-- Modal Student Tables -->
+                <div class="w3-container">
+                <div id="id01" class="w3-modal">
+                <div class="w3-modal-content">
+                    <div class="w3-container">
+                    <span id="closeModal" class="w3-button w3-display-topright">&times;</span>
+                    <div class="panel">
+                        <div class="body">
+                            <div class="input-group">
+                                <!-- <label for="searchBox">Filtrar</label> -->
+                                <input type="search" id="searchBox" placeholder="Filter...">
+                            </div>
+                        </div>
+                    </div>
+                    <table class="myTable table hover" id="tableId">
+
+                    </table>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Modal Student Profile -->
+            <div class="w3-container">
+                <div id="id02" class="w3-modal">
+                <div class="w3-modal-content">
+                    <div class="w3-container">
+                        <span id="closeModalStudent"class="w3-button w3-display-topright">&times;</span>
+                        <div class="banner_content">
+                            <div class="media">
+                                <div class="d-flex">
+                                    <img class="student_profile_image" src="images/pada.jpg" alt="">
+                                </div>
+                                
+                                <div id="student_profile" class="media-body">
+                                    <div class="personal_text">
+                                        <h6>Hello Everybody, i am</h6>
+                                        <h3 id="fullnameSt">Tasos Bolosis</h3>
+                                        <h4>Graduate of the <span id="deptSt">Department of Engineering</span></h4>
+                                        <p id="descSt">Go to settings and write a description about you...</p>
+                                        <ul class="list basic_info">
+                                            <li><i class="lnr lnr-calendar-full"></i> <span id="dobSt">31st December, 1992</span></li>
+                                            <li><i class="lnr lnr-phone-handset"></i><span id="mobSt">44 (012) 6954 783</span></li>
+                                            <li><i class="lnr lnr-envelope"></i><span id="mailSt">businessplan@donald</span></li>
+                                            <li><i class="lnr lnr-briefcase"></i> Work Experience: <span id="nonWorkExp" style="color: red;">x</span> <span id="workExp" style="color: green; display: none;">✓</span><i class="lnr lnr-checkmark-circle" style="display: none; color: green;"></i><i class="lnr lnr-cross-circle" style="color:red; display: none;"></i></li>
+                                            <li id="uploaded-cv"><a href="#" id="downloadCv"><i class="lnr lnr-enter"></i> Download CV</a></li>
+                                            <li id="no-cv" style="display: none;"><i class="lnr lnr-file-empty"></i> No CV</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            				<!-- Change Password Modal -->
+				<div class="w3-container">
+					<div id="id04" class="w3-modal">
+						<div class="w3-modal-content">
+						<div class="w3-container">
+							<span onclick="document.getElementById('id04').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+							<form class="login100-form validate-form" id="changePasswordForm">
+
+								<div class="wrap-input100 validate-input " data-validate="Username is required">
+									<span class="label-input100">Username</span>
+									<input class="input100" type="text" name="username" id="username" placeholder="Enter username" disabled required>
+									<span class="focus-input100"></span>
+								</div>
+
+		
+								<div class="wrap-input100 validate-input" data-validate = "Password is required">
+									<span class="label-input100">Old Password</span>
+									<input class="input100" type="password" name="oldPassword" id="old_pass" placeholder="*************" required>
+									<span class="focus-input100"></span>
+								</div>
+								<div class="wrap-input100 validate-input" data-validate = "Password is required">
+									<span class="label-input100">New Password</span>
+									<input class="input100" type="password" name="newPassword" id="new_pass" placeholder="*************" required>
+									<span class="focus-input100"></span>
+								</div>
+
+								<div class="wrap-input100 validate-input m-b-18" data-validate = "Email is required">
+									<span class="label-input100">Repeat New Password</span>
+									<input class="input100" type="password" name="repeatPass"  id="repeat_pass" placeholder="*************" required>
+									<span class="focus-input100"></span>
+								</div>
+								<p style="display: none; color:red;" id="diffPassw">Different verified password. Please correct it.</p>
+
+								<br>
+								<div class="container-login100-form-btn">
+									<button class="login100-form-btn" type="submit">
+										Submit
+									</button>
+								</div>
+								<img id="loadingImag" src="images/loading.gif" style="display: none;">
+								<br><br><br><br>
+								<p style="display: none; color:#57b846;" id="changeSuccess">Your password has changed succesfully.</p>
+								<p style="display: none; color:red;" id="changeFail">Problem with change of password.</p>
+							</form>
+						
+						</div>
+						</div>
+					</div>
+				</div>
+
+            <script type="text/javascript" src="js/components/paginate.js"></script>
+            <script src="js/profiles/company.js" type="module"></script>
+            <script src="js/components/combobox.js" type="module"></script>
+
+    </body>
+</html>

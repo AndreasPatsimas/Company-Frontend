@@ -1,0 +1,48 @@
+#company_combobox{
+    right: 0;
+    left: auto;
+    margin-left: 0px;
+    margin-right: 50px;
+  }
+
+  #check_box{
+    right: auto;
+    left: 0;
+    margin-left: 50px;
+    margin-right: 0px;
+  }
+
+  #loadingImage{
+    right: auto;
+    left: 0;
+    margin-left: 300px;
+    margin-right: 0px;
+  }
+
+  /* .profile_image{
+    height: 50px;
+    width: 50px;
+  } */
+
+  #student_profile{
+    right: auto;
+    left: 0;
+    margin-left: 100px;
+    margin-right: 0px;
+  }
+
+  .handy{
+    cursor: pointer;
+  }
+
+  .profileImage{
+    height: 200px; 
+    
+    width: 200px;
+  }
+
+  .student_profile_image{
+    height: 200px; 
+    
+    width: 200px;
+  }
