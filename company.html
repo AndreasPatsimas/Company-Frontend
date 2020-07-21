@@ -92,38 +92,21 @@
                                 <img style="width: 270px;" src="images/attributes.png" alt="">
                                 
                             </div>
-                            
                             <div class="media-body">
-                                
-                                <form class="login100-form validate-form" id="search_form">
-
-                                    <div id="company_combobox" class="custom-select" style="width:200px;">
-                                        <select name="department" required>
-                                            <option value="0">Select Department</option>
-                                            <option value="1">Department of Public Health</option>
-                                            <option value="2">Department of Management, Economics & Social Sciences</option>
-                                            <option value="3">Department of Food Sciences</option>
-                                            <option value="4">Department of Health and Welfare Sciences</option>
-                                            <option value="5">Department of Applied Arts and Culture</option>
-                                            <option value="6">Department of Engineering</option>
-                                        </select>
-                                        <p style="display: none; color:red;" id="departChoice">Department choice is required.</p>
-                                    </div>
-                                    <br><br><br>
-                                    
-                                    <div class="contact100-form-checkbox">
-                                        <input class="input-checkbox100" id="ckb3" type="checkbox" name="workExperience">
-                                        <label class="label-checkbox100" for="ckb3">
-                                            Work Experience
-                                        </label>
-                                    </div>					
-                                
-                                    <button class="login100-form-search-btn" id="search-btn" type="submit">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                    <p style="display: none; color:red;" id="students_not_found">Students with these properties not found.</p>
-                                    <img id="loadingImage" src="images/loading.gif" style="display: none;">
-                                </form>
+                                <div class="w3-container">
+                                    <h1>Attributes <a href="#addParameterModal" class="btn btn-success" data-toggle="modal"> <span>Add New Parameter</span></a></h1>
+                                    <div class="panel">
+                                        <div class="body">
+                                            <div class="input-group">
+                                                <!-- <label for="attributesBox">Filter</label> -->
+                                                <input type="search" id="attributesBox" placeholder="Filter...">
+                                            </div>
+                                        </div>
+                                    </h1>
+                                    <table class="myAttributesTable table hover" id="attributesTableId">
+                
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -347,9 +330,9 @@
 					</div>
 				</div>
 
-            <script type="text/javascript" src="js/profiles/home.js"></script>
-            <script type="text/javascript" src="js/components/paginate.js"></script>
-            <script src="js/profiles/company.js" type="module"></script>
+            <script src="js/profiles/home.js"></script>
+            <script src="js/profiles/attributes.js" type="module"></script>
+            <script src="js/components/paginate.js"></script>
             <script src="js/components/combobox.js" type="module"></script>
 
     </body>
