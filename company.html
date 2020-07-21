@@ -4,8 +4,8 @@
         
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="icon" href="images/icons/pada-logo.jpg">
-        <title>Company Profile</title>
+        <link rel="icon" href="images/icons/cite.png">
+        <title>Company</title>
         
         <link rel="stylesheet" href="css/bootstrap.css">
         <link rel="stylesheet" href="css/vendors/linericon/style.css">
@@ -37,8 +37,8 @@
                             <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                                 <ul class="nav navbar-nav menu_nav ml-auto">
                                     <li class="nav-item active"><a class="nav-link" href="#" id="home">Home</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#" id="search_students">Attributes</a></li>  
-                                    <li class="nav-item"><a class="nav-link" href="#" id="settings">Employees</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#" id="attributes">Attributes</a></li>  
+                                    <li class="nav-item"><a class="nav-link" href="#" id="employees">Employees</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#" id="map">Map</a></li>
                                 </ul>
                             </div> 
@@ -62,11 +62,15 @@
                                          <h6>Welcome ,</h6>
                                          <h3 id="company_name">CITE S.A.</h3>
                                          <h4>our company application is available for you</h4>
-                                         <p>Our purpose is to help effectively connection between students and companies. As a company you have the opportunity, by purchasing units, to download as many student resumes as the units are.</p>
+                                         <p> CITE has been an invaluable partner to us, eager to understand our needs, 
+                                             identify the challenges and map our vision to implementation. 
+                                             Through close collaboration, an agile mindset and an approach adapting to our needs and timeline, 
+                                             CITE has managed to fill the gap from vision to product in a short period of time and 
+                                             to the full extent of our expectations.</p>
                                          <ul class="list basic_info">
                                              <!-- <li><a href="#"><i class="lnr lnr-calendar-full"></i> 31st December, 1992</a></li> -->
-                                             <li><a href="#"><i class="lnr lnr-envelope"></i><span id="mail">businessplan@donald</span> </a></li>
-                                             <li><a href="#"><i class="lnr lnr-database"></i> units: <span id="units">44</span></a></li>
+                                             <li><a href="#"><i class="lnr lnr-envelope"></i><span id="mail">reception@cite.gr</span> </a></li>
+                                             <li><a href="#"><i class="lnr lnr-phone"></i><span id="units">(+30)212 1020553</span></a></li>
                                          </ul>
                                          <ul class="list personal_social">
                                              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
@@ -81,7 +85,7 @@
 
 
                         <!--Attributes-->
-                        <div class="banner_content" style="display: none;" id="searchArea">
+                        <div class="banner_content" style="display: none;" id="attributesArea">
                         <div class="media">
                             <div >
                                 
@@ -127,7 +131,7 @@
 
      
                          <!--Employees-->
-                         <div class="banner_content" style="display: none;" id="settingsArea">
+                         <div class="banner_content" style="display: none;" id="employeesArea">
                              <input id="changePhoto" style="display: none;" type="file"/>
                              <a href="#" style="color: #57b846;" id="changePhotoLink"><i class="lnr lnr-pencil"></i> Change my logo</a>
                              <div class="media">
@@ -215,13 +219,13 @@
                                         <br><br><br>
                                         
                                         <div class="contact100-form-checkbox">
-                                            <input class="input-checkbox100" id="ckb3" type="checkbox" name="workExperience">
-                                            <label class="label-checkbox100" for="ckb3">
+                                            <input class="input-checkbox100" id="ckb4" type="checkbox" name="workExperience">
+                                            <label class="label-checkbox100" for="ckb4">
                                                 Work Experience
                                             </label>
                                         </div>					
                                     
-                                        <button class="login100-form-search-btn" id="search-btn" type="submit">
+                                        <button class="login100-form-search-btn" id="map-btn" type="submit">
                                             <i class="fa fa-search"></i>
                                         </button>
                                         <p style="display: none; color:red;" id="students_not_found">Students with these properties not found.</p>
@@ -267,7 +271,7 @@
                         <div class="banner_content">
                             <div class="media">
                                 <div class="d-flex">
-                                    <img class="student_profile_image" src="images/pada.jpg" alt="">
+                                    <img class="student_profile_image" src="images/employees.jpg" alt="">
                                 </div>
                                 
                                 <div id="student_profile" class="media-body">
@@ -343,6 +347,7 @@
 					</div>
 				</div>
 
+            <script type="text/javascript" src="js/profiles/home.js"></script>
             <script type="text/javascript" src="js/components/paginate.js"></script>
             <script src="js/profiles/company.js" type="module"></script>
             <script src="js/components/combobox.js" type="module"></script>

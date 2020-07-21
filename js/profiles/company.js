@@ -22,15 +22,9 @@ const getAge = (dateString) => {
 };
 
 //constant fields
-const homeArea = document.querySelector("#homeArea"),
 
-      home = document.querySelector("#home"),
 
-      settings = document.querySelector("#settings"),
-
-      settingsForm = document.querySelector("#settingsForm"),
-
-      settingsArea = document.querySelector("#settingsArea"),
+const settingsForm = document.querySelector("#settingsForm"),
 
       changePasswordLink = document.querySelector("#change_password"),
 
@@ -38,70 +32,15 @@ const homeArea = document.querySelector("#homeArea"),
 
       deleteMyProfile = document.querySelector("#deleteMyProfile"),
 
-      search = document.querySelector("#search_students"),
-
       searchForm = document.querySelector("#search_form"),
 
-      searchArea = document.querySelector("#searchArea"),
-
-      map = document.querySelector("#map"),
-
       mapForm = document.querySelector("#map_form"),
-
-      mapArea = document.querySelector("#mapArea"),
       
       table = document.querySelector("#tableId"),      
       
       downloadLink = document.createElement('a');
 
       downloadLink.style.display = "none";
-
-
-
-//tabs
-home.addEventListener("click", () => {
-
-    homeArea.style.display = "block";
-
-    settingsArea.style.display = "none";
-
-    searchArea.style.display = "none";
-
-    mapArea.style.display = "none";
-});
-
-settings.addEventListener("click", () => {
-
-    homeArea.style.display = "none";
-
-    searchArea.style.display = "none";
-
-    settingsArea.style.display = "block";
-
-    mapArea.style.display = "none";
-});
-
-search.addEventListener("click", () => {
-
-    homeArea.style.display = "none";
-
-    searchArea.style.display = "block";
-
-    settingsArea.style.display = "none";
-
-    mapArea.style.display = "none";
-});
-
-map.addEventListener("click", () => {
-
-    homeArea.style.display = "none";
-
-    searchArea.style.display = "none";
-
-    settingsArea.style.display = "none";
-
-    mapArea.style.display = "block";
-});
 
 // profile company
 
