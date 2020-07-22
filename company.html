@@ -94,7 +94,11 @@
                                 </div>
                                 <div class="media-body">
                                     <div class="w3-container">
-                                        <h1>Attributes <a href="#addParameterModal" class="btn btn-success" data-toggle="modal"> <span>Add New Parameter</span></a></h1>
+                                        <h1>Attributes 
+                                            <a href="#addAttributeModal" id="onAttributeAdd" class="btn btn-success" data-toggle="modal"> 
+                                                <span>Add New Attribute</span>
+                                            </a>
+                                        </h1>
                                         <div class="panel">
                                             <div class="body">
                                                 <div class="input-group">
@@ -280,49 +284,42 @@
                 </div>
             </div>
 
-            				<!-- Change Password Modal -->
+            				<!-- Add Attribute Modal -->
 				<div class="w3-container">
-					<div id="id04" class="w3-modal">
+					<div id="addAttributeModal" class="w3-modal">
 						<div class="w3-modal-content">
 						<div class="w3-container">
-							<span onclick="document.getElementById('id04').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-							<form class="login100-form validate-form" id="changePasswordForm">
+                            <br><br>
+                            <a style="display: none;" href="#" id="deleteAttributeBtn" class="btn btn-danger" data-toggle="modal"> 
+                                <span>Delete Attribute</span>
+                            </a>
+							<span id="closeAddAtributeModal" class="w3-button w3-display-topright">&times;</span>
+							<form class="login100-form validate-form" id="addAttributeForm">
 
-								<div class="wrap-input100 validate-input " data-validate="Username is required">
-									<span class="label-input100">Username</span>
-									<input class="input100" type="text" name="username" id="username" placeholder="Enter username" disabled required>
-									<span class="focus-input100"></span>
-								</div>
+                                <input type="hidden" name="id" id="attributeId">
 
-		
-								<div class="wrap-input100 validate-input" data-validate = "Password is required">
-									<span class="label-input100">Old Password</span>
-									<input class="input100" type="password" name="oldPassword" id="old_pass" placeholder="*************" required>
+								<div class="wrap-input100 validate-input " data-validate="Name is required">
+									<span class="label-input100">Name</span>
+									<input class="input100" type="text" name="name" id="attributeName" placeholder="Enter name" required>
 									<span class="focus-input100"></span>
-								</div>
-								<div class="wrap-input100 validate-input" data-validate = "Password is required">
-									<span class="label-input100">New Password</span>
-									<input class="input100" type="password" name="newPassword" id="new_pass" placeholder="*************" required>
+                                </div>
+                                
+                                <div class="wrap-input100 validate-input m-b-18" data-validate="Value is required">
+									<span class="label-input100">Value</span>
+									<input class="input100" type="text" name="value" id="value" placeholder="Enter value" required>
 									<span class="focus-input100"></span>
-								</div>
-
-								<div class="wrap-input100 validate-input m-b-18" data-validate = "Email is required">
-									<span class="label-input100">Repeat New Password</span>
-									<input class="input100" type="password" name="repeatPass"  id="repeat_pass" placeholder="*************" required>
-									<span class="focus-input100"></span>
-								</div>
-								<p style="display: none; color:red;" id="diffPassw">Different verified password. Please correct it.</p>
-
-								<br>
-								<div class="container-login100-form-btn">
+                                </div>
+                                
+                                <div class="container-login100-form-btn m-b-18">
 									<button class="login100-form-btn" type="submit">
 										Submit
-									</button>
-								</div>
-								<img id="loadingImag" src="images/loading.gif" style="display: none;">
+                                    </button>
+                                </div>
+
+								<img id="attributeAddLoading" src="images/loading.gif" style="display: none;">
 								<br><br><br><br>
-								<p style="display: none; color:#57b846;" id="changeSuccess">Your password has changed succesfully.</p>
-								<p style="display: none; color:red;" id="changeFail">Problem with change of password.</p>
+								<p style="display: none; color:#57b846;" id="attributeAddSuccess">Attribute has saved succesfully.</p>
+								<p style="display: none; color:red;" id="attributeAddFail">There is already an attribute with same name and value.</p>
 							</form>
 						
 						</div>

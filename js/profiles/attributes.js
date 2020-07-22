@@ -1,7 +1,18 @@
 import{ MyHTTP } from '../utils/httpRequest.js';
+import{ formToJSON } from '../utils/bind.js';
 
 const attributes = document.querySelector("#attributes"),
-      table = document.querySelector("#attributesTableId");
+      table                 = document.querySelector("#attributesTableId"),
+      addAttributeLinkBtn   = document.querySelector("#onAttributeAdd"),
+      addAttributeForm      = document.querySelector("#addAttributeForm"),
+      attributeAddLoading   = document.querySelector("#attributeAddLoading"),
+      attributeAddSuccess   = document.querySelector("#attributeAddSuccess"),
+      attributeAddFail      = document.querySelector("#attributeAddFail"),
+      closeAddAtributeModal = document.querySelector("#closeAddAtributeModal"),
+      attributeName         = document.querySelector("#attributeName"),
+      attributeValue        = document.querySelector("#value"),
+      attributeId           = document.querySelector("#attributeId"),
+      deleteAttributeBtn    = document.querySelector("#deleteAttributeBtn");
 
 const http = new MyHTTP;
 
@@ -85,7 +96,91 @@ table.onclick = ("click", "tr", (ap) => {
 
     if(clickedRow.id != "th"){
 
-        const id = clickedRow.getElementsByTagName("td")[0].textContent;
-        console.log(id);
+        attributeId.value = clickedRow.getElementsByTagName("td")[0].textContent;
+        attributeName.value = clickedRow.getElementsByTagName("td")[1].textContent;
+        attributeValue.value = clickedRow.getElementsByTagName("td")[2].textContent;
+
+        deleteAttributeBtn.style.display = "";
+        addAttributeLinkBtn.click();
+    }
+});
+
+addAttributeLinkBtn.addEventListener("click", () => {
+
+    attributeAddSuccess.style.display = "none";
+
+    attributeAddFail.style.display = "none";
+
+    document.getElementById("addAttributeModal").style.display = "block";
+});
+
+closeAddAtributeModal.addEventListener("click", () => {
+
+    document.getElementById("addAttributeModal").style.display = "none";
+
+    attributeId.value    = null;
+    attributeName.value  = null;
+    attributeValue.value = null;
+
+    deleteAttributeBtn.style.display = "none";
+});
+
+addAttributeForm.addEventListener("submit", (e) => {
+
+    e.preventDefault();
+
+    addAttribute();
+});
+
+const addAttribute = () =>{
+
+    attributeAddSuccess.style.display = "none";
+
+    attributeAddFail.style.display = "none";
+
+    const data = formToJSON(addAttributeForm.elements);
+    
+    if(data.id.trim() === "")
+        data.id = null;
+
+    attributeAddLoading.style.display = "block";
+
+    http.post("http://localhost:9081/company/api/attributes", data)
+    .then(res => {
+        console.log(res);
+        if(res.status === 201){
+            attributeAddLoading.style.display = "none";
+            
+            attributeAddSuccess.style.display = "block";
+
+            fetchAttributes();
+        }
+        else{
+            attributeAddLoading.style.display = "none";
+        
+            attributeAddFail.style.display = "block";
+        }
+    })
+    .catch(res => {
+        console.log(res);
+        attributeAddLoading.style.display = "none";
+        
+        attributeAddFail.style.display = "block";
+    });
+};
+
+deleteAttributeBtn.addEventListener("click", () => {
+
+    const confirmation = confirm("Are you sure you want to delete this attribute?");
+
+    if(confirmation){
+
+        http.delete(`http://localhost:9081/company/api/attributes/${attributeId.value}`)
+        .then(res => {
+            console.log(res);
+
+            location.reload();
+        })
+        .catch(error => console.log(error));
     }
 });
