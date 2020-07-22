@@ -120,59 +120,30 @@
      
                          <!--Employees-->
                          <div class="banner_content" style="display: none;" id="employeesArea">
-                             <input id="changePhoto" style="display: none;" type="file"/>
-                             <a href="#" style="color: #57b846;" id="changePhotoLink"><i class="lnr lnr-pencil"></i> Change my logo</a>
                              <div class="media">
                                  <div >
-                                     
-                                     <img class="profileImage" src="images/employees.jpg" alt="">
-                                     
+                                     <img src="images/employees.jpg" alt="">
                                  </div>
-                                 <img id="loadingIm" src="images/loading.gif" style="display: none; height: 50px; width: 50px;">
-                                 <p style="display: none; color:#57b846;" id="uploadImageSuccess">Your Image uploaded successfully.</p>
-                                 <p style="display: none; color:red;" id="uploadImageFail">Image upload failed. Image size not supported.</p>
-                                 <p style="display: none; color:red;" id="no_image">The selected file is not an image.</p>
-                                      
                                  <div class="media-body">
                                      
-                                     <form class="login100-form validate-form" id="settingsForm">
-                                             <div class=" m-b-26">												
-                                                 <a href="#" style="color: red;" id="deleteMyProfile"><i class="lnr lnr-power-switch"></i> Delete My Profile</a>
-                                             </div>
-
-                                             <div class=" m-b-26">												
-                                                <a href="#" style="color: #008080;" id="change_password"><i class="lnr lnr-pencil"></i> Change Password</a>
+                                    <div class="w3-container">
+                                        <h1>Employees 
+                                            <a href="#addEmployeeModal" id="onEmployeeAdd" class="btn btn-success" data-toggle="modal"> 
+                                                <span>Add New Employee</span>
+                                            </a>
+                                        </h1>
+                                        <div class="panel">
+                                            <div class="body">
+                                                <div class="input-group">
+                                                    <!-- <label for="attributesBox">Filter</label> -->
+                                                    <input type="search" id="employeesBox" placeholder="Filter...">
+                                                </div>
                                             </div>
-     
-                                             <div class="wrap-input100 validate-input m-b-26" data-validate=" is required">
-                                                 <span class="label-input100">Company Name</span>
-                                                 <input class="input100" type="text" name="companyName" id="companyName" placeholder="Enter company name" required>
-                                                 <span class="focus-input100"></span>
-                                             </div>
-                             
-                                             <div class="wrap-input100 validate-input m-b-18" data-validate = "Email is required">
-                                                     <span class="label-input100">Email</span>
-                                                     <input class="input100" type="email" name="email" id="email" placeholder="Enter email" required>
-                                                     <span class="focus-input100"></span>
-                                            </div>
-                                 
-                                            <div class="wrap-input100 validate-input m-b-18" data-validate = "is required">
-                                                <span class="label-input100">Units</span>
-                                                <input class="input100" type="number" name="units" placeholder="Buy units. Each unit costs 5€.">
-                                                <span class="focus-input100"></span>
-                                            </div>
-                                                 
-                             
-                                             <div class="container-login100-form-btn">
-                                                 <button class="login100-form-btn" type="submit">
-                                                     Submit
-                                                 </button>
-                                             </div>
-                                             <img id="loadingIma" src="images/loading.gif" style="display: none;">
-                                             <br><br><br><br>
-                                             <p style="display: none; color:#57b846;" id="mailSuccess">Your settings have been saved.</p>
-                                             <p style="display: none; color:red;" id="mailFail">There is another user who has this email account.</p>
-                                         </form>
+                                            <table class="myEmployeesTable table hover" id="employeesTableId">
+                        
+                                            </table>
+                                        </div>
+                                    </div>
                                  </div>
                              </div>
                          </div>
@@ -227,108 +198,89 @@
                  </div>
              </section>
 
-            <!-- Modal Student Tables -->
-                <div class="w3-container">
-                <div id="id01" class="w3-modal">
-                <div class="w3-modal-content">
-                    <div class="w3-container">
-                    <span id="closeModal" class="w3-button w3-display-topright">&times;</span>
-                    <div class="panel">
-                        <div class="body">
-                            <div class="input-group">
-                                <!-- <label for="searchBox">Filtrar</label> -->
-                                <input type="search" id="searchBox" placeholder="Filter...">
-                            </div>
-                        </div>
-                    </div>
-                    <table class="myTable table hover" id="tableId">
-
-                    </table>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-            <!-- Modal Student Profile -->
+            <!-- Add Attribute Modal -->
             <div class="w3-container">
-                <div id="id02" class="w3-modal">
-                <div class="w3-modal-content">
+                <div id="addAttributeModal" class="w3-modal">
+                    <div class="w3-modal-content">
                     <div class="w3-container">
-                        <span id="closeModalStudent"class="w3-button w3-display-topright">&times;</span>
-                        <div class="banner_content">
-                            <div class="media">
-                                <div class="d-flex">
-                                    <img class="student_profile_image" src="images/employees.jpg" alt="">
-                                </div>
-                                
-                                <div id="student_profile" class="media-body">
-                                    <div class="personal_text">
-                                        <h6>Hello Everybody, i am</h6>
-                                        <h3 id="fullnameSt">Tasos Bolosis</h3>
-                                        <h4>Graduate of the <span id="deptSt">Department of Engineering</span></h4>
-                                        <p id="descSt">Go to settings and write a description about you...</p>
-                                        <ul class="list basic_info">
-                                            <li><i class="lnr lnr-calendar-full"></i> <span id="dobSt">31st December, 1992</span></li>
-                                            <li><i class="lnr lnr-phone-handset"></i><span id="mobSt">44 (012) 6954 783</span></li>
-                                            <li><i class="lnr lnr-envelope"></i><span id="mailSt">businessplan@donald</span></li>
-                                            <li><i class="lnr lnr-briefcase"></i> Work Experience: <span id="nonWorkExp" style="color: red;">x</span> <span id="workExp" style="color: green; display: none;">✓</span><i class="lnr lnr-checkmark-circle" style="display: none; color: green;"></i><i class="lnr lnr-cross-circle" style="color:red; display: none;"></i></li>
-                                            <li id="uploaded-cv"><a href="#" id="downloadCv"><i class="lnr lnr-enter"></i> Download CV</a></li>
-                                            <li id="no-cv" style="display: none;"><i class="lnr lnr-file-empty"></i> No CV</li>
-                                        </ul>
-                                    </div>
-                                </div>
+                        <br><br>
+                        <a style="display: none;" href="#" id="deleteAttributeBtn" class="btn btn-danger" data-toggle="modal"> 
+                            <span>Delete Attribute</span>
+                        </a>
+                        <span id="closeAddAtributeModal" class="w3-button w3-display-topright">&times;</span>
+                        <form class="login100-form validate-form" id="addAttributeForm">
+
+                            <input type="hidden" name="id" id="attributeId">
+
+                            <div class="wrap-input100 validate-input " data-validate="Name is required">
+                                <span class="label-input100">Name</span>
+                                <input class="input100" type="text" name="name" id="attributeName" placeholder="Enter name" required>
+                                <span class="focus-input100"></span>
                             </div>
-                        </div>
+                            
+                            <div class="wrap-input100 validate-input m-b-18" data-validate="Value is required">
+                                <span class="label-input100">Value</span>
+                                <input class="input100" type="text" name="value" id="value" placeholder="Enter value" required>
+                                <span class="focus-input100"></span>
+                            </div>
+                            
+                            <div class="container-login100-form-btn m-b-18">
+                                <button class="login100-form-btn" type="submit">
+                                    Submit
+                                </button>
+                            </div>
+
+                            <img id="attributeAddLoading" src="images/loading.gif" style="display: none;">
+                            <br><br><br><br>
+                            <p style="display: none; color:#57b846;" id="attributeAddSuccess">Attribute has saved succesfully.</p>
+                            <p style="display: none; color:red;" id="attributeAddFail">There is already an attribute with same name and value.</p>
+                        </form>
+                    
                     </div>
-                </div>
+                    </div>
                 </div>
             </div>
 
-            				<!-- Add Attribute Modal -->
-				<div class="w3-container">
-					<div id="addAttributeModal" class="w3-modal">
-						<div class="w3-modal-content">
-						<div class="w3-container">
-                            <br><br>
-                            <a style="display: none;" href="#" id="deleteAttributeBtn" class="btn btn-danger" data-toggle="modal"> 
-                                <span>Delete Attribute</span>
-                            </a>
-							<span id="closeAddAtributeModal" class="w3-button w3-display-topright">&times;</span>
-							<form class="login100-form validate-form" id="addAttributeForm">
+            <!-- Add Employee Modal -->
+            <div class="w3-container">
+                <div id="addEmployeeModal" class="w3-modal">
+                    <div class="w3-modal-content">
+                    <div class="w3-container">
+                        <br><br>
+                        <a style="display: none;" href="#" id="deleteEmployeeBtn" class="btn btn-danger" data-toggle="modal"> 
+                            <span>Delete Employee</span>
+                        </a>
+                        <span id="closeAddEmployeeModal" class="w3-button w3-display-topright">&times;</span>
+                        <form class="login100-form validate-form" id="addEmployeeForm">
 
-                                <input type="hidden" name="id" id="attributeId">
+                            <input type="hidden" name="id" id="employeeId">
 
-								<div class="wrap-input100 validate-input " data-validate="Name is required">
-									<span class="label-input100">Name</span>
-									<input class="input100" type="text" name="name" id="attributeName" placeholder="Enter name" required>
-									<span class="focus-input100"></span>
-                                </div>
-                                
-                                <div class="wrap-input100 validate-input m-b-18" data-validate="Value is required">
-									<span class="label-input100">Value</span>
-									<input class="input100" type="text" name="value" id="value" placeholder="Enter value" required>
-									<span class="focus-input100"></span>
-                                </div>
-                                
-                                <div class="container-login100-form-btn m-b-18">
-									<button class="login100-form-btn" type="submit">
-										Submit
-                                    </button>
-                                </div>
+                            <div class="wrap-input100 validate-input m-b-18" data-validate="Name is required">
+                                <span class="label-input100">Name</span>
+                                <input class="input100" type="text" name="name" id="employeeName" placeholder="Enter name" required>
+                                <span class="focus-input100"></span>
+                            </div>
+                            
+                            <div class="container-login100-form-btn">
+                                <button class="login100-form-btn" type="submit">
+                                    Submit
+                                </button>
+                            </div>
 
-								<img id="attributeAddLoading" src="images/loading.gif" style="display: none;">
-								<br><br><br><br>
-								<p style="display: none; color:#57b846;" id="attributeAddSuccess">Attribute has saved succesfully.</p>
-								<p style="display: none; color:red;" id="attributeAddFail">There is already an attribute with same name and value.</p>
-							</form>
-						
-						</div>
-						</div>
-					</div>
-				</div>
+                            <img id="employeeAddLoading" src="images/loading.gif" style="display: none;">
+                            <br><br><br><br>
+                            <p style="display: none; color:#57b846;" id="employeeAddSuccess">Employee has saved succesfully.</p>
+                            <p style="display: none; color:red;" id="employeeAddFail">Fail to save employee.</p>
+                        </form>
+                    
+                    </div>
+                    </div>
+                </div>
+            </div>
 
             <script src="js/profiles/home.js"></script>
             <script src="js/profiles/attributes.js" type="module"></script>
+            <script src="js/profiles/employees.js" type="module"></script>
             <script src="js/components/paginate.js"></script>
             <script src="js/components/combobox.js" type="module"></script>
 

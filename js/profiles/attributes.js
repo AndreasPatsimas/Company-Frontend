@@ -23,8 +23,8 @@ attributes.addEventListener("click", () => {
 
 const fetchAttributes = () => {
 
-    if(document.querySelector("tbody") != null){
-        document.getElementById("attributesTableId").removeChild(document.querySelector("tbody"));
+    while (table.hasChildNodes()) {
+        table.removeChild(table.lastChild);
     }
 
     const tbody = document.createElement("tbody");
@@ -50,7 +50,7 @@ const fetchAttributes = () => {
 
     http.get(`http://localhost:9081/company/api/attributes`)
     .then(attributes => {
-        console.log(attributes);
+        
         attributes.forEach(attribute => {
             
             const tr = document.createElement("tr");
