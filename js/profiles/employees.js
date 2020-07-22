@@ -85,7 +85,7 @@ const fetchEmployees = () => {
             dateOfBirth.textContent = `${employee.dateOfBirth}`;
         
             const attributes = document.createElement("td");
-            attributes.textContent = `${employee.attributes}`;
+            attributes.textContent = `${employee.attributesFormat}`;
 
             tr.appendChild(id);
             tr.appendChild(name);
