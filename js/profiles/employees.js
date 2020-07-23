@@ -11,6 +11,9 @@ const employees             = document.querySelector("#employees"),
       closeAddEmployeeModal = document.querySelector("#closeAddEmployeeModal"),
       employeeName          = document.querySelector("#employeeName"),
       employeeId            = document.querySelector("#employeeId"),
+      address               = document.querySelector("#address"),
+      hasCar                = document.querySelector("#hasCar"),
+      dateOfBirth           = document.querySelector("#dateOfBirth"),
       deleteEmployeeBtn     = document.querySelector("#deleteEmployeeBtn");
 
 const http = new MyHTTP;
@@ -122,6 +125,9 @@ table.onclick = ("click", "tr", (ap) => {
 
         employeeId.value = clickedRow.getElementsByTagName("td")[0].textContent;
         employeeName.value = clickedRow.getElementsByTagName("td")[1].textContent;
+        address.value = clickedRow.getElementsByTagName("td")[2].textContent;
+        hasCar.checked = (clickedRow.getElementsByTagName("td")[3].textContent === "x") ? false : true;
+        dateOfBirth.value = clickedRow.getElementsByTagName("td")[4].textContent;
 
         deleteEmployeeBtn.style.display = "";
         addEmployeeLinkBtn.click();
@@ -143,6 +149,9 @@ closeAddEmployeeModal.addEventListener("click", () => {
 
     employeeId.value    = null;
     employeeName.value  = null;
+    address.value       = null;
+    hasCar.checked      = false;
+    dateOfBirth.value   = null;
 
     deleteEmployeeBtn.style.display = "none";
 });
@@ -164,12 +173,14 @@ const addEmployee = () =>{
     
     if(data.id.trim() === "")
         data.id = null;
+    
+    data.hasCar = hasCar.checked ? true : false;
 
     employeeAddLoading.style.display = "block";
 
     http.post("http://localhost:9081/company/api/employees", data)
     .then(res => {
-        console.log(res);
+        
         if(res.status === 201){
             employeeAddLoading.style.display = "none";
             
