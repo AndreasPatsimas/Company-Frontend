@@ -280,7 +280,13 @@
                                         Car
                                     </label>
                                 </div>					
-                                
+                            </div>
+
+                            <div class=" validate-input m-b-18">
+                                <a href="#employeeAttributesModal" id="employeeAttributes" style="color:#57b846;" data-toggle="modal"> 
+                                    <span>Employee's attributes</span>
+                                </a>
+                                <span class="focus-input100"></span>
                             </div>
                             
                             <div class="container-login100-form-btn">
@@ -299,6 +305,29 @@
                     </div>
                 </div>
             </div>
+
+            <!--Add Attributes to Employee Modal-->
+            <div class="w3-container">
+                <div id="employeeAttributesModal" class="w3-modal">
+                    <div class="w3-modal-content">
+                        <div class="w3-container">
+                            <h1>Attributes</h1>
+                            <div class="panel">
+                                <div class="body">
+                                    <div class="input-group">
+                                        <input type="search" id="attributesBox" placeholder="Filter...">
+                                    </div>
+                                </div>
+                            </h1>
+                            <table class="employeeAttributesTable table hover" id="employeeAttributesTableId">
+            
+                            </table>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+
 
             <script src="js/profiles/home.js"></script>
             <script src="js/profiles/attributes.js" type="module"></script>
