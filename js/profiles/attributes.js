@@ -48,7 +48,7 @@ const fetchAttributes = () => {
 
     tbody.appendChild(trh);
 
-    http.get(`http://localhost:9081/company/api/attributes`)
+    http.get("/js/profiles/attributes.json")//`http://localhost:9081/company/api/attributes`
     .then(attributes => {
         
         attributes.forEach(attribute => {
