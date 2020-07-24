@@ -1,0 +1,35 @@
+// 20200724083817
+// http://localhost:9081/company/api/attributes
+
+[
+    {
+      "id": "82FF24BB-0180-40F9-B68E-15799556A5C2",
+      "name": "Height",
+      "value": "Medium"
+    },
+    {
+      "id": "EB812BF6-3415-4686-A0B6-38089C87D09D",
+      "name": "Height",
+      "value": "Short"
+    },
+    {
+      "id": "4F8EAC6B-8B29-4716-A597-C8CDE3A3996D",
+      "name": "Weight",
+      "value": "Heavy"
+    },
+    {
+      "id": "F27B9C58-FD9E-4EB1-9B09-E01FF7032CC8",
+      "name": "Weight",
+      "value": "Thin"
+    },
+    {
+      "id": "83382664-DA55-4C6D-8D18-ED79C26332A8",
+      "name": "Weight",
+      "value": "Medium"
+    },
+    {
+      "id": "3C86A592-823B-4B83-952F-F437D08F2EA8",
+      "name": "Height",
+      "value": "Tall"
+    }
+  ]
