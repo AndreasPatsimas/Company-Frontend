@@ -15,10 +15,12 @@ const employees                    = document.querySelector("#employees"),
       address                      = document.querySelector("#address"),
       hasCar                       = document.querySelector("#hasCar"),
       dateOfBirth                  = document.querySelector("#dateOfBirth"),
+      attributesOfEmployee         = document.querySelector("#attributesId"),
       deleteEmployeeBtn            = document.querySelector("#deleteEmployeeBtn"),
       employeeAttributesLink       = document.querySelector("#employeeAttributes"),
       closeEmployeeAttributesModal = document.querySelector("#closeEmployeeAttributesModal"),
-      employeeAttributesModal      = document.querySelector("#employeeAttributesModal");
+      employeeAttributesModal      = document.querySelector("#employeeAttributesModal"),
+      bindAttributes               = document.querySelector("#bindAttributes");
 
 const http = new MyHTTP;
 
@@ -66,7 +68,7 @@ const fetchEmployees = () => {
 
     tbody.appendChild(trh);
 
-    http.get("/js/profiles/employees.json") //`http://localhost:9081/company/api/employees`
+    http.get(`http://localhost:9081/company/api/employees`) //"/js/profiles/employees.json"
     .then(employees => {
         
         employees.forEach(employee => {
@@ -151,11 +153,12 @@ closeAddEmployeeModal.addEventListener("click", () => {
 
     document.getElementById("addEmployeeModal").style.display = "none";
 
-    employeeId.value    = null;
-    employeeName.value  = null;
-    address.value       = null;
-    hasCar.checked      = false;
-    dateOfBirth.value   = null;
+    employeeId.value              = null;
+    employeeName.value            = null;
+    address.value                 = null;
+    hasCar.checked                = false;
+    dateOfBirth.value             = null;
+    attributesOfEmployee.value    = null;
 
     deleteEmployeeBtn.style.display = "none";
 });
@@ -179,6 +182,11 @@ const addEmployee = () =>{
         data.id = null;
     
     data.hasCar = hasCar.checked ? true : false;
+
+    if(data.attributes != null && data.attributes.trim() !== "")
+        data.attributes = JSON.parse(data.attributes.split(","));
+    else
+        data.attributes = null;
 
     employeeAddLoading.style.display = "block";
 
@@ -227,8 +235,26 @@ deleteEmployeeBtn.addEventListener("click", () => {
 employeeAttributesLink.addEventListener("click", () => {
     
     employeeAttributesModal.style.display = "block";
-
+       
     fetchAttributes();
+
+    if(employeeId.value.trim() !== "" && employeeId.value != null){
+
+        http.get(`http://localhost:9081/company/api/employees/${employeeId.value}`)
+        .then(employee => {
+            
+            const checkboxes = document.querySelectorAll('.attributeCheck');
+    
+            checkboxes.forEach(checkbox => {
+        
+                if(checkbox.className.indexOf('attributeCheck')>-1 && JSON.stringify(employee.attributes).includes(checkbox.getAttribute("id"))){
+                    
+                    checkbox.checked = true;
+                }
+            });
+        })
+        .catch(error => console.log(error));
+    }
 });
 
 closeEmployeeAttributesModal.addEventListener("click", () => {
@@ -240,8 +266,9 @@ closeEmployeeAttributesModal.addEventListener("click", () => {
 
 const fetchAttributes = () => {
 
-    while (attributesTable.hasChildNodes()) {
+    while (attributesTable.hasChildNodes() || table.hasChildNodes()) {
         attributesTable.removeChild(attributesTable.lastChild);
+        table.removeChild(table.lastChild);
     }
 
     const tbody = document.createElement("tbody");
@@ -250,8 +277,8 @@ const fetchAttributes = () => {
     const trh = document.createElement("tr");
     trh.setAttribute("id", "th");
 
-    const idTh = document.createElement("th");
-    idTh.style.display = "none";
+    const checkTh = document.createElement("th");
+    checkTh.textContent = "-";
 
     const nameTh = document.createElement("th");
     nameTh.textContent = "NAME";
@@ -259,13 +286,13 @@ const fetchAttributes = () => {
     const valueTh = document.createElement("th");
     valueTh.textContent = "VALUE";
 
-    trh.appendChild(idTh);
+    trh.appendChild(checkTh);
     trh.appendChild(nameTh);
     trh.appendChild(valueTh);
 
     tbody.appendChild(trh);
 
-    http.get("/js/profiles/attributes.json")//`http://localhost:9081/company/api/attributes`
+    http.get(`http://localhost:9081/company/api/attributes`)//"/js/profiles/attributes.json"
     .then(attributes => {
         
         attributes.forEach(attribute => {
@@ -273,17 +300,30 @@ const fetchAttributes = () => {
             const tr = document.createElement("tr");
             tr.setAttribute("class", "handy");
 
-            const id = document.createElement("td");
-            id.textContent = `${attribute.id}`;
-            id.style.display = "none";
+            const input = document.createElement("input");
+            input.setAttribute("type", "checkbox");
+            input.setAttribute("class", "attributeCheck");
+            input.setAttribute("id", `${attribute.id}`);
+            input.setAttribute("name", `${attribute.name} ${attribute.value}`);
+        
+            const label = document.createElement("label");
+            label.setAttribute("for", "checkbox1");
+
+            const span = document.createElement("span");
+            span.setAttribute("class", "custom-checkbox");
+        
+            const checkbox = document.createElement("td");
+            span.appendChild(input);
+            span.appendChild(label);
+            checkbox.appendChild(span);
             
             const name = document.createElement("td");
             name.textContent = `${attribute.name}`;
 
             const value = document.createElement("td");
             value.textContent = attribute.value;
-
-            tr.appendChild(id);
+            
+            tr.appendChild(checkbox);
             tr.appendChild(name);
             tr.appendChild(value);
 
@@ -293,7 +333,7 @@ const fetchAttributes = () => {
         });
 
         let options = {
-            numberPerPage:5, //Ποσό δεδομένων ανά σελίδα
+            numberPerPage:10, //Ποσό δεδομένων ανά σελίδα
             goBar:false, //Γραμμή όπου μπορείτε να πληκτρολογήσετε τον αριθμό της σελίδας στην οποία θέλετε να μεταβείτε
             pageCounter:true, //Ο μετρητής σελίδας, στον οποίο είστε ένας από εσάς, πόσες σελίδες
         };
@@ -306,3 +346,24 @@ const fetchAttributes = () => {
     })
     .catch(error => console.log(error));
 };
+
+bindAttributes.addEventListener("click", () => {
+
+    const attributes = [];
+
+    const checkboxes = document.querySelectorAll('.attributeCheck');
+
+    checkboxes.forEach(checkbox => {
+
+        if(checkbox.className.indexOf('attributeCheck')>-1 && checkbox.checked){
+            
+            attributes.push({
+                id: checkbox.getAttribute("id")
+            });
+        }
+    });
+
+    attributesOfEmployee.value = JSON.stringify(attributes);
+    
+    employeeAttributesModal.style.display = "none";
+});
