@@ -22,6 +22,11 @@
 
         <link rel="stylesheet" href="css/paginate.css">
         <link rel="stylesheet" href="css/ligne.css">
+        <style type="text/css">
+            #mapContainer{
+                height: 500px;
+            }
+        </style>
                 
     </head>
     <body>
@@ -347,9 +352,10 @@
             <div class="w3-container">
                 <div id="mapModal" class="w3-modal">
                     <div class="w3-modal-content">
-                        <div class="w3-container" id="mapContainer">
+                        <div class="w3-container">
                             <h1>Map</h1>
                             <span id="closeMapModal" class="w3-button w3-display-topright">&times;</span>
+                            <div id="mapContainer"></div>
                             
                         </div>  
                     </div>
@@ -362,6 +368,10 @@
             <script src="js/profiles/employees.js" type="module"></script>
             <script src="js/profiles/map.js" type="module"></script>
             <script src="js/components/paginate.js"></script>
+            <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=GOOGLE_API_KEY"> //GOOGLE_API_KEY
+            </script>
+      
 
     </body>
 </html>

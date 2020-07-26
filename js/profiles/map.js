@@ -7,8 +7,8 @@ const searchMode                   = document.querySelector("#search"),
       resultsTable                 = document.querySelector("#resultsTableId"),
       backToSearchMode             = document.querySelector("#switchToSearchMode"),
       mapModal                     = document.querySelector("#mapModal"),
-      closeMapModal                = document.querySelector("#closeMapModal"),
-      mapContainer                = document.querySelector("#mapContainer");
+      closeMapModal                = document.querySelector("#closeMapModal");
+      //mapContainer                 = document.querySelector("#mapContainer");
 
 const http = new MyHTTP;
 
@@ -234,6 +234,8 @@ resultsTable.onclick = ("click", "tr", (ap) => {
 
         console.log(employeeId, employeeName, address, hasCar);
         mapModal.style.display = "block";
+
+        openMap(address, employeeName);
     }
 });
 
@@ -241,3 +243,27 @@ closeMapModal.addEventListener("click", () => {
     
     mapModal.style.display = "none";
 });
+
+const openMap = (address, employeeName) => {
+
+    const geocoder = new google.maps.Geocoder();
+
+    geocoder.geocode( { 'address': address}, (results, status) => {
+
+        if (status == google.maps.GeocoderStatus.OK) {
+            const latitude = results[0].geometry.location.lat();
+            const longitude = results[0].geometry.location.lng();
+
+            const map = new google.maps.Map(document.getElementById('mapContainer'), {
+                center: {lat: latitude, lng: longitude},
+                zoom: 8
+            });
+
+            const marker = new google.maps.Marker({
+                position: {lat: latitude, lng: longitude},
+                title: employeeName
+            });
+            marker.setMap(map);
+        } 
+    }); 
+}
