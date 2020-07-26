@@ -235,7 +235,7 @@ resultsTable.onclick = ("click", "tr", (ap) => {
         console.log(employeeId, employeeName, address, hasCar);
         mapModal.style.display = "block";
 
-        openMap(address, employeeName);
+        openMap(employeeId, address, employeeName);
     }
 });
 
@@ -244,7 +244,7 @@ closeMapModal.addEventListener("click", () => {
     mapModal.style.display = "none";
 });
 
-const openMap = (address, employeeName) => {
+const openMap = (employeeId, address, employeeName) => {
 
     const geocoder = new google.maps.Geocoder();
 
@@ -256,14 +256,38 @@ const openMap = (address, employeeName) => {
 
             const map = new google.maps.Map(document.getElementById('mapContainer'), {
                 center: {lat: latitude, lng: longitude},
-                zoom: 8
+                zoom: 12
             });
 
-            const marker = new google.maps.Marker({
-                position: {lat: latitude, lng: longitude},
-                title: employeeName
-            });
-            marker.setMap(map);
+            createMarker({lat: latitude, lng: longitude}, employeeName, map, "red-circle.png");
+
+            http.get(`http://localhost:9081/company/api/employees`) //"/js/profiles/employees.json"
+            .then(employees => {
+                
+                employees.forEach(employee => {
+                    geocoder.geocode( { 'address': employee.address}, (results, status) => {
+                    
+                        if (status == google.maps.GeocoderStatus.OK && employee.id !== employeeId) {
+                            const latitude = results[0].geometry.location.lat();
+                            const longitude = results[0].geometry.location.lng();
+                            createMarker({lat: latitude, lng: longitude}, employee.name, map, "ylw-circle.png");
+                        }
+                    });
+                })
+            })
+            .catch(error => console.log(error));
         } 
     }); 
+}
+
+const createMarker = (coordinates, employeeName, map, icon) => {
+
+    const iconBase = 'http://maps.google.com/mapfiles/kml/paddle/';
+
+    const marker = new google.maps.Marker({
+        position: coordinates,
+        title: employeeName,
+        map: map,
+        icon: iconBase + icon
+    });
 }
