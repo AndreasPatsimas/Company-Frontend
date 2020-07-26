@@ -30,6 +30,19 @@ export class MyHTTP {
       return resData;
     }
 
+    async search(url, data) {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+  
+      const resData = await response.json();
+      return resData;
+    }
+
      // Make an HTTP PUT Request
   
     async put(url, data, jwt) {

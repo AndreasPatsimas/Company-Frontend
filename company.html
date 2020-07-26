@@ -159,36 +159,45 @@
                                 </div>
                                 
                                 <div class="media-body">
-                                    
-                                    <form class="login100-form validate-form" id="map_form">
-    
-                                        <div id="company_combobox" class="custom-select" style="width:200px;">
-                                            <select name="department" required>
-                                                <option value="0">Select Department</option>
-                                                <option value="1">Department of Public Health</option>
-                                                <option value="2">Department of Management, Economics & Social Sciences</option>
-                                                <option value="3">Department of Food Sciences</option>
-                                                <option value="4">Department of Health and Welfare Sciences</option>
-                                                <option value="5">Department of Applied Arts and Culture</option>
-                                                <option value="6">Department of Engineering</option>
-                                            </select>
-                                            <p style="display: none; color:red;" id="departChoice">Department choice is required.</p>
-                                        </div>
-                                        <br><br><br>
                                         
-                                        <div class="contact100-form-checkbox">
-                                            <input class="input-checkbox100" id="ckb4" type="checkbox" name="workExperience">
-                                            <label class="label-checkbox100" for="ckb4">
-                                                Work Experience
-                                            </label>
-                                        </div>					
-                                    
-                                        <button class="login100-form-search-btn" id="map-btn" type="submit">
+                                    <div class="w3-container" id="search">
+                                        <h1>Search for Employees with specific Attributes</h1>
+                                        <div class="panel">
+                                            <div class="body">
+                                                <div class="input-group">
+                                                    <input type="search" id="searchBox" placeholder="Filter...">
+                                                </div>
+                                            </div>
+                                        </h1>
+                                        <table class="searchTable table hover" id="searchTableId">
+                        
+                                        </table>
+                                        </div>
+                                        <button class="login100-form-search-btn" id="search-btn">
                                             <i class="fa fa-search"></i>
                                         </button>
-                                        <p style="display: none; color:red;" id="students_not_found">Students with these properties not found.</p>
-                                        <img id="loadingImage" src="images/loading.gif" style="display: none;">
-                                    </form>
+                                    </div> 	
+                                    
+                                    <div class="w3-container" id="results" style="display: none;">
+                                        <h1>Click On One Employee</h1>
+                                        <div class="panel">
+                                            <div class="body">
+                                                <div class="input-group">
+                                                    <!-- <label for="attributesBox">Filter</label> -->
+                                                    <input type="search" id="resultsBox" placeholder="Filter...">
+                                                </div>
+                                            </div>
+                                            <table class="resultsTable table hover" id="resultsTableId">
+                        
+                                            </table>
+                                        </div>
+                                        <a href="#" style="color: #57b846;" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30" id="switchToSearchMode" >
+								
+                                            <i class="fa fa-long-arrow-left m-l-5"></i>
+                                            Back
+                                        </a>
+                                    </div>
+                                     
                                 </div>
                             </div>
                         </div>
@@ -338,8 +347,8 @@
             <script src="js/profiles/home.js"></script>
             <script src="js/profiles/attributes.js" type="module"></script>
             <script src="js/profiles/employees.js" type="module"></script>
+            <script src="js/profiles/map.js" type="module"></script>
             <script src="js/components/paginate.js"></script>
-            <script src="js/components/combobox.js" type="module"></script>
 
     </body>
 </html>
