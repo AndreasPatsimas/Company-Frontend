@@ -235,7 +235,7 @@ resultsTable.onclick = ("click", "tr", (ap) => {
         console.log(employeeId, employeeName, address, hasCar);
         mapModal.style.display = "block";
 
-        openMap(employeeId, address, employeeName);
+        openMap(employeeId, address, employeeName, hasCar);
     }
 });
 
@@ -244,9 +244,12 @@ closeMapModal.addEventListener("click", () => {
     mapModal.style.display = "none";
 });
 
-const openMap = (employeeId, address, employeeName) => {
+const openMap = (employeeId, address, employeeName, hasCar) => {
 
     const geocoder = new google.maps.Geocoder();
+
+    const directionsService = new google.maps.DirectionsService;
+    const directionsDisplay = new google.maps.DirectionsRenderer;
 
     geocoder.geocode( { 'address': address}, (results, status) => {
 
@@ -271,6 +274,14 @@ const openMap = (employeeId, address, employeeName) => {
                             const latitude = results[0].geometry.location.lat();
                             const longitude = results[0].geometry.location.lng();
                             createMarker({lat: latitude, lng: longitude}, employee.name, map, "ylw-circle.png");
+
+                            let travelMode;
+                            if(hasCar)
+                                travelMode = "DRIVING";
+                            else
+                                travelMode = "WALKING";
+                            
+                            calculateAndDisplayRoute(directionsService, directionsDisplay, address, employee.address, travelMode)
                         }
                     });
                 })
@@ -289,5 +300,21 @@ const createMarker = (coordinates, employeeName, map, icon) => {
         title: employeeName,
         map: map,
         icon: iconBase + icon
+    });
+}
+
+const calculateAndDisplayRoute = (directionsService, directionsDisplay, origin, destination, travelMode) => {
+
+    directionsService.route({
+        origin: origin,
+        destination: destination,
+        travelMode: travelMode
+    }, (response, status) => {
+
+        if(status === "OK"){
+            directionsDisplay.setDirections(response);
+        }
+        else
+            console.log("Directions request failed due to " + status);
     });
 }
