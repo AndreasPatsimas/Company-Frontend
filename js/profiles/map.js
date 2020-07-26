@@ -5,7 +5,10 @@ const searchMode                   = document.querySelector("#search"),
       searchBtn                    = document.querySelector("#search-btn"),
       resultsMode                  = document.querySelector("#results"),
       resultsTable                 = document.querySelector("#resultsTableId"),
-      backToSearchMode             = document.querySelector("#switchToSearchMode");
+      backToSearchMode             = document.querySelector("#switchToSearchMode"),
+      mapModal                     = document.querySelector("#mapModal"),
+      closeMapModal                = document.querySelector("#closeMapModal"),
+      mapContainer                = document.querySelector("#mapContainer");
 
 const http = new MyHTTP;
 
@@ -180,7 +183,7 @@ const fetchEmployees = (attributesData) => {
             car.innerHTML = carHtml;
         
             const dateOfBirth = document.createElement("td");
-            dateOfBirth.textContent = `${employee.dateOfBirth}`;
+            dateOfBirth.textContent = employee.dateOfBirth != null ? employee.dateOfBirth : "";
         
             const attributes = document.createElement("td");
             attributes.textContent = `${employee.attributesFormat}`;
@@ -230,5 +233,11 @@ resultsTable.onclick = ("click", "tr", (ap) => {
         const hasCar = (clickedRow.getElementsByTagName("td")[3].textContent === "x") ? false : true;
 
         console.log(employeeId, employeeName, address, hasCar);
+        mapModal.style.display = "block";
     }
+});
+
+closeMapModal.addEventListener("click", () => {
+    
+    mapModal.style.display = "none";
 });

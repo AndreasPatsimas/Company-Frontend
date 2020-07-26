@@ -91,7 +91,7 @@ const fetchEmployees = () => {
             car.innerHTML = carHtml;
         
             const dateOfBirth = document.createElement("td");
-            dateOfBirth.textContent = `${employee.dateOfBirth}`;
+            dateOfBirth.textContent = employee.dateOfBirth != null ? employee.dateOfBirth : "";
         
             const attributes = document.createElement("td");
             attributes.textContent = `${employee.attributesFormat}`;
